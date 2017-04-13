@@ -1,5 +1,6 @@
-//  Run:
-//      ./make_backup.sh
+//  If edit, update online zip file
+//  and github repository by running:
+//      ./make_backup.sh (digitalbitbox.com/make_backup.sh)
 
 'use strict';
 

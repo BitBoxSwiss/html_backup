@@ -781,3 +781,41 @@ img::-moz-selection {
     background-color:#404040;
     color:#F7F7F7;
 }
+
+.socialbar {
+    display: none;
+    position: fixed;
+    top: 40%; 
+    right: 0px;
+    z-index: 100;
+}
+
+.socialbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.socialbar li a {
+    box-shadow: none;
+    display: block;
+    background: #888;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.socialbar li:first-child a:hover { background: #3b5998 }
+.socialbar li:nth-child(2) a:hover { background: #00acee }
+.socialbar li:nth-child(3) a:hover { background: #0088cc }
+.socialbar li:nth-child(4) a:hover { background: #dd4b39 }
+.socialbar li:nth-child(5) a:hover { background: #0077b5 }
+
+@media(max-width:768px) {
+    //.socialbar li:first-child a { background: #3b5998 }
+    //.socialbar li:nth-child(2) a { background: #00acee }
+    //.socialbar li:nth-child(3) a { background: #0088cc }
+    //.socialbar li:nth-child(4) a { background: #dd4b39 }
+    //.socialbar li:nth-child(5) a { background: #0077b5 }
+}

@@ -20674,8 +20674,9 @@ exports.createContext = Script.createContext = function (context) {
 
 },{"indexof":90}],133:[function(require,module,exports){
 (function (Buffer){
-//  Run:
-//      ./make_backup.sh
+//  If edit, update online zip file
+//  and github repository by running:
+//      ./make_backup.sh (digitalbitbox.com/make_backup.sh)
 
 'use strict';
 

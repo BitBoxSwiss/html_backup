@@ -17,3 +17,12 @@ $(function() {
         event.preventDefault();
     });
 });
+
+$(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 200) {
+    $('.socialbar').fadeIn();
+  } else {
+    $('.socialbar').fadeOut();
+  }
+});
