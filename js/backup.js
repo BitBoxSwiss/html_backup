@@ -20798,6 +20798,14 @@ function clear_notice(e)
 }
 
 
+$('#backup-name').keypress(function (e) {
+    var chr = String.fromCharCode(e.which);
+    if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_".indexOf(chr) < 0)
+        return false;
+    return true;
+});
+
+
 function backup_export()
 {
     var backuptext = ui.backupEntropy.value;
