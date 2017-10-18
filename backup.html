@@ -46,9 +46,9 @@
             <button id="backup-create-button" class="btn btn-default button-user-entropy"><i class="fa fa-long-arrow-down"></i> Create</button>
             <br>
             
-            <textarea id="backup-entropy" class="text-input" placeholder="wallet backup" rows="2" cols="60" wrap="hard" spellcheck="false"></textarea>
+            <textarea id="backup-entropy" class="text-input" placeholder="wallet backup" rows="2" cols="70" wrap="hard" spellcheck="false"></textarea>
             <br>
-            <input type="text" id="backup-password" class="text-input" placeholder="passphrase" size="19" value="" spellcheck="false"/>
+            <input type="password" id="backup-password" class="text-input" placeholder="password" size="19" value="" spellcheck="false"/>
             &nbsp;&nbsp;&nbsp;
             <button id="backup-generate-button" class="btn btn-default"><i class="fa fa-long-arrow-down"></i> Generate</button>
             &nbsp;&nbsp;&nbsp;
@@ -56,15 +56,19 @@
             <br><br>
            
             <div class="placeholder">BIP32 extended master private key</div>
-            <textarea id="backup-xpriv" class="text-input" rows="3" cols="60" wrap="hard" spellcheck="false" readonly></textarea>
+            <textarea id="backup-xpriv" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
             <br>
             
             <div class="placeholder">Electrum recovery key</div>
-            <textarea id="backup-electrum" class="text-input" rows="3" cols="60" wrap="hard" spellcheck="false" readonly></textarea>
+            <textarea id="backup-electrum" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
             <br>
             
             <div class="placeholder">Electrum recovery key for a multisig wallet</div>
-            <textarea id="backup-electrum-multisig" class="text-input" rows="3" cols="60" wrap="hard" spellcheck="false" readonly></textarea>
+            <textarea id="backup-electrum-multisig" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+            
+            <div class="placeholder">Ethereum private keys</div>
+            <textarea id="backup-ethereum-private-keys" class="text-input" rows="5" cols="70" spellcheck="false" readonly></textarea>
             <br><br>
             
             <input type="text" id="backup-name" class="text-input" placeholder="wallet name" value="" spellcheck="false" />
@@ -73,9 +77,14 @@
             <br><br><br>
             
             <small>
-                * To <b>recover your wallet without a Digital Bitbox</b>, 
-                enter the wallet backup text and passphrase in the above boxes, click 'generate', 
+                * To <b>recover your Bitcoin wallet without a Digital Bitbox</b>, 
+                enter the wallet backup text and password in the above boxes, click 'generate', 
                 and import the recovery key into the Electrum software wallet.
+                <br><br>
+                * To <b>recover Ethereum without a Digital Bitbox</b>, 
+                enter the wallet backup text and password in the above boxes, click 'generate', 
+                and enter an Ethereum private key into MyEtherWallet. 
+                The order of private keys corresponds to the order of public addresses when 'viewing' a wallet in MyEtherWallet. 
                 <br><br>
                 * The backup is saved as a PDF file on the micro SD card for convenience. 
                 Plug the micro SD card into a trusted printer if you wish to also make a <b>paper backup</b>.
@@ -86,10 +95,12 @@
                 <b>High quality randomness is crucial!</b> 
                 Otherwise, a thief may be able to guess your key and take your coins.
                 <br><br>
-                * A wallet is generated from the backup text and passphrase using a modified BIP39 procedure. 
+                * A wallet is generated from the backup text and password using a modified BIP39 procedure. 
                 In particular, PBKDF2 strengthening is done twice (22,528 total rounds) for stronger protection. 
                 <br><br>
-                * Standard wallet addresses are generated following the BIP32 and BIP44 specifications. For a multi-signature wallet, the base BIP32 key path is <i>m/100'/45'/0'</i>.
+                * Standard wallet addresses are generated following the BIP32 and BIP44 specifications. 
+                For a multi-signature wallet, the base BIP32 key path is <i>m/100'/45'/0'</i>.
+                For Ethereum, the base BIP32 key path is <i>m/44'/60'/0'/0</i>.
             </small>
             <br><br>
         </section>

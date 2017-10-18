@@ -20742,15 +20742,22 @@ function spinnerStop()
 
 String.prototype.format = function()
 {
-   var content = this;
-   for (var i=0; i < arguments.length; i++)
-   {
+    var content = this;
+    for (var i=0; i < arguments.length; i++)
+    {
         var replacement = '{' + i + '}';
         content = content.replace(replacement, arguments[i]);  
-   }
-   return content;
+    }
+    return content;
 };
-    
+
+
+function toHexString(byteArray) {
+  return Array.from(byteArray, function(byte) {
+    return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+  }).join('')
+}
+
 
 function pre_pad_10(number) {
     number = ("0000000000"+number).slice(-10);
@@ -20782,6 +20789,7 @@ function backup_clear()
     ui.backupXpriv.value = '';
     ui.backupElectrum.value = '';
     ui.backupElectrumMultisig.value = '';
+    ui.backupEthereumPrivateKeys.value = '';
     clear_notice(ui.backupEntropy);
     clear_notice(ui.backupXpriv);
     clear_notice(ui.backupPassword);
@@ -20789,6 +20797,7 @@ function backup_clear()
     clear_notice(ui.backupName);
     clear_notice(ui.backupElectrum);
     clear_notice(ui.backupElectrumMultisig);
+    clear_notice(ui.backupEthereumPrivateKeys);
 }
 
 
@@ -20907,6 +20916,7 @@ function backup_create()
     ui.backupXpriv.value = '';
     ui.backupElectrum.value = '';
     ui.backupElectrumMultisig.value = '';
+    ui.backupEthereumPrivateKeys.value = '';
     
     if (ui.backupUserEntropy.value === '') {
         ui.backupUserEntropy.focus();
@@ -20943,6 +20953,7 @@ function backup_generate()
     ui.backupXpriv.value = '';;
     ui.backupElectrum.value = '';;
     ui.backupElectrumMultisig.value = '';;
+    ui.backupEthereumPrivateKeys.value = '';;
     clear_notice(ui.backupUserEntropy);
     
     if (ui.backupEntropy.value === '') {
@@ -20979,8 +20990,8 @@ function backup_generate()
         var curve_n = 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141';
         var zero    = '0000000000000000000000000000000000000000000000000000000000000000';
         
-        var seed = Crypto.pbkdf2Sync(ui.backupPassword.value, 
-                                     PBKDF2_SALT, PBKDF2_ROUNDS_APP, PBKDF2_HMACLEN, 'sha512');
+        var seed = new Buffer(ui.backupPassword.value, 'utf8');
+            seed = Crypto.pbkdf2Sync(seed, PBKDF2_SALT, PBKDF2_ROUNDS_APP, PBKDF2_HMACLEN, 'sha512');
             seed = bip39.mnemonicToSeed(ui.backupEntropy.value, seed.toString('hex'));
         
         var hmac = Crypto.createHmac('sha512', 'Bitcoin seed')
@@ -21007,9 +21018,17 @@ function backup_generate()
         var electrum_key_ms = bip32_keychain.derive("m/100'/45'/0'");
         electrum_key_ms = base58check.encode(new Buffer(electrum_key_ms.extended_private_key, 'hex'));
         
+        var ethereum_key, 
+            ethereum_keys = '';
+        for (var i = 0; i < 20; i++) {
+            ethereum_key = bip32_keychain.derive("m/44'/60'/0'/0/" + i);
+            ethereum_keys += toHexString(base58check.decode(ethereum_key.eckey.getExportedPrivateKey())).slice(2) + '\n';
+        }
+
         ui.backupXpriv.value = xpriv;
         ui.backupElectrum.value = electrum_key;
         ui.backupElectrumMultisig.value = electrum_key_ms;
+        ui.backupEthereumPrivateKeys.value = ethereum_keys;
 
         spinnerStop();
     }, 100);
