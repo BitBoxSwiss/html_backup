@@ -16837,7 +16837,7 @@ function pbkdf2Sync (password, salt, iterations, keylen, digest) {
 
   digest = digest || 'sha1'
 
-  if (!Buffer.isBuffer(password)) password = new Buffer(password, 'binary')
+  if (!Buffer.isBuffer(password)) password = new Buffer(password, 'utf8')
   if (!Buffer.isBuffer(salt)) salt = new Buffer(salt, 'binary')
 
   var hLen
