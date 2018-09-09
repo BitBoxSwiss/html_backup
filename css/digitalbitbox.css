@@ -28,7 +28,7 @@ body {
         background: -webkit-linear-gradient(#222, #444); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#222, #444); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#222, #444); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#222, #444); /* Standard syntax */    
+        background: linear-gradient(#222, #444); /* Standard syntax */
     }
 }
 
@@ -63,7 +63,7 @@ h6 {
     margin: 0 0 10px;
 }
 
-h3 { 
+h3 {
     margin: 0 0 25px;
     font-size: 20px;
     line-height: 1.5;
@@ -72,7 +72,7 @@ h3 {
     h3 {
         margin: 0 0 35px;
         font-size: 25px;
-    }    
+    }
 }
 
 p {
@@ -91,13 +91,13 @@ hr {
     border: 0;
     border-top: 1px solid;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
     color: #ddd;
 }
 
 #splash-screen {
     background-attachment: fixed;
-    background-color: #000000; 
+    background-color: #000000;
     background-image: url(../img/splash.png);
     background-position: center center;
     background-repeat: no-repeat;
@@ -130,7 +130,7 @@ hr {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-} 
+}
 
 .feature-p {
     font-size: 16px;
@@ -155,7 +155,7 @@ hr {
 @media(min-width:767px) {
     .buy {
         font-size: 20px;
-    }    
+    }
 }
 
 .form-group {
@@ -211,7 +211,7 @@ a:focus {
 }
 .icon a {
     box-shadow: none;
-    background-color: transparent;    
+    background-color: transparent;
     color: #444;
     -webkit-transition: color .3s ease-in-out;
     -moz-transition: color .3s ease-in-out;
@@ -261,7 +261,7 @@ a:focus {
 
 #team-background {
     background-attachment: fixed;
-    background-color: #fbfbfd; 
+    background-color: #fbfbfd;
     background-image: url(../img/alps_full.png);
     background-position: center top;
     background-repeat: no-repeat;
@@ -295,12 +295,12 @@ a:focus {
     background: -webkit-linear-gradient(#222, #444); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#222, #444); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#222, #444); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#222, #444); /* Standard syntax */    
+    background: linear-gradient(#222, #444); /* Standard syntax */
     z-index: 100;
 }
 .navbar a {
     box-shadow: none;
-    background-color:transparent;    
+    background-color:transparent;
     color: #bbb;
 }
 .navbar .nav li a {
@@ -352,7 +352,7 @@ a:focus {
     .navbar-brand {
         font-size: 45px;
     }
-    
+
     .top-nav-collapse {
         padding: 5px;
         border-bottom: 2px solid rgba(255,255,255,.3);
@@ -427,7 +427,7 @@ a:focus {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    
+
     width: 100%;
     height: 100%;
     display: table;
@@ -445,7 +445,7 @@ a:focus {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    
+
     width: 100%;
     height: 100%;
     display: table;
@@ -570,7 +570,7 @@ details > p {
     -moz-animation-timing-function: linear;
 }
 
-@-webkit-keyframes pulse {    
+@-webkit-keyframes pulse {
     0 {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -587,7 +587,7 @@ details > p {
     }
 }
 
-@-moz-keyframes pulse {    
+@-moz-keyframes pulse {
     0 {
         -moz-transform: scale(1);
         transform: scale(1);
@@ -635,8 +635,8 @@ details > p {
     }
 }
 
-.center-block { 
-    float: none; 
+.center-block {
+    float: none;
 }
 
 .btn {
@@ -785,7 +785,7 @@ img::-moz-selection {
 .socialbar {
     display: none;
     position: fixed;
-    top: 40%; 
+    top: 40%;
     right: 0px;
     z-index: 100;
 }

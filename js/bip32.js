@@ -1,6 +1,10 @@
 
 var BITCOIN_MAINNET_PUBLIC = 0x0488b21e;
 var BITCOIN_MAINNET_PRIVATE = 0x0488ade4;
+var BITCOIN_SEGWIT_MAINNET_PUBLIC = 0x049d7cb2;
+var BITCOIN_SEGWIT_MAINNET_PRIVATE = 0x049d7878;
+var BITCOIN_NATIVE_SEGWIT_MAINNET_PUBLIC = 0x04b24746;
+var BITCOIN_NATIVE_SEGWIT_MAINNET_PRIVATE = 0x04b2430c;
 var BITCOIN_TESTNET_PUBLIC = 0x043587cf;
 var BITCOIN_TESTNET_PRIVATE = 0x04358394;
 var DOGECOIN_MAINNET_PUBLIC = 0x02facafd;
@@ -48,6 +52,8 @@ BIP32.prototype.init_from_bytes = function(bytes) {
     var is_private = 
         (this.version == BITCOIN_MAINNET_PRIVATE  ||
          this.version == BITCOIN_TESTNET_PRIVATE  ||
+         this.version == BITCOIN_SEGWIT_MAINNET_PRIVATE ||
+         this.version == BITCOIN_NATIVE_SEGWIT_MAINNET_PRIVATE ||
          this.version == DOGECOIN_MAINNET_PRIVATE ||
          this.version == DOGECOIN_TESTNET_PRIVATE ||
          this.version == JUMBUCKS_MAINNET_PRIVATE ||
@@ -57,6 +63,8 @@ BIP32.prototype.init_from_bytes = function(bytes) {
     var is_public = 
         (this.version == BITCOIN_MAINNET_PUBLIC  ||
          this.version == BITCOIN_TESTNET_PUBLIC  ||
+         this.version == BITCOIN_SEGWIT_MAINNET_PUBLIC ||
+         this.version == BITCOIN_NATIVE_SEGWIT_MAINNET_PUBLIC ||
          this.version == DOGECOIN_MAINNET_PUBLIC ||
          this.version == DOGECOIN_TESTNET_PUBLIC ||
          this.version == JUMBUCKS_MAINNET_PUBLIC ||
@@ -94,6 +102,14 @@ BIP32.prototype.build_extended_public_key = function() {
     case BITCOIN_MAINNET_PUBLIC:
     case BITCOIN_MAINNET_PRIVATE:
         v = BITCOIN_MAINNET_PUBLIC;
+        break;
+    case BITCOIN_SEGWIT_MAINNET_PUBLIC:
+    case BITCOIN_SEGWIT_MAINNET_PRIVATE:
+        v = BITCOIN_SEGWIT_MAINNET_PUBLIC;
+        break;
+    case BITCOIN_NATIVE_SEGWIT_MAINNET_PUBLIC:
+    case BITCOIN_NATIVE_SEGWIT_MAINNET_PRIVATE:
+        v = BITCOIN_NATIVE_SEGWIT_MAINNET_PUBLIC;
         break;
     case BITCOIN_TESTNET_PUBLIC:
     case BITCOIN_TESTNET_PRIVATE:
@@ -250,6 +266,8 @@ BIP32.prototype.derive_child = function(i) {
 
     var is_private = 
         (this.version == BITCOIN_MAINNET_PRIVATE  ||
+         this.version == BITCOIN_SEGWIT_MAINNET_PRIVATE ||
+         this.version == BITCOIN_NATIVE_SEGWIT_MAINNET_PRIVATE ||
          this.version == BITCOIN_TESTNET_PRIVATE  ||
          this.version == DOGECOIN_MAINNET_PRIVATE ||
          this.version == DOGECOIN_TESTNET_PRIVATE ||

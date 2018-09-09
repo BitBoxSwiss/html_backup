@@ -14,7 +14,7 @@
 
 
 <body>
-    
+
     <noscript class="js-notice"></noscript>
     <!--#include file="inc/navbar.html" -->
     <div id="splash-screen"></div>
@@ -22,9 +22,9 @@
 
 
     <div class="container">
-        
+
         <br><br><br><br>
-        
+
         <h2>Backup center</h2>
         <div>
             This page is not required to use your Digital Bitbox and is provided for instructional purposes.
@@ -35,17 +35,17 @@
             <small><small>(compatible with code versions 2.0+)</small></small>
             <br><br><br>
         </div>
-            
-            
+
+
         <section id="backup-seed">
             <hr>
             <br>
             <br>
-           
+
             <textarea id="backup-user-entropy" class="text-input" placeholder="create your own wallet from random words or data (optional)" rows="3" cols="44" wrap="hard" spellcheck="false"></textarea>
             <button id="backup-create-button" class="btn btn-default button-user-entropy"><i class="fa fa-long-arrow-down"></i> Create</button>
             <br>
-            
+
             <textarea id="backup-entropy" class="text-input" placeholder="wallet backup" rows="2" cols="70" wrap="hard" spellcheck="false"></textarea>
             <br>
             <input type="password" id="backup-password" class="text-input" placeholder="password" size="19" value="" spellcheck="false"/>
@@ -59,13 +59,34 @@
             <textarea id="backup-xpriv" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
             <br>
 
-            <div class="placeholder">Electrum recovery key</div>
-            <textarea id="backup-electrum" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <div class="placeholder">Bitcoin Electrum Legacy BIP44 recovery key</div>
+            <textarea id="backup-electrum-btc-legacy" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
             <br>
 
-            <div class="placeholder">Electrum recovery key for a multisig wallet</div>
-            <textarea id="backup-electrum-multisig" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <div class="placeholder">Bitcoin Electrum p2sh-segwit BIP49 recovery key</div>
+            <textarea id="backup-electrum-btc-segwit" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
             <br>
+
+            <div class="placeholder">Bitcoin Electrum native-segwit BIP84 recovery key</div>
+            <textarea id="backup-electrum-btc-native-segwit" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+
+            <div class="placeholder">Bitcoin Electrum recovery key for a multisig wallet</div>
+            <textarea id="backup-electrum-btc-multisig" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+
+            <div class="placeholder">Litecoin Electrum Legacy BIP44 recovery key</div>
+            <textarea id="backup-electrum-ltc-legacy" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+
+            <div class="placeholder">Litecoin Electrum p2sh-segwit BIP49 recovery key</div>
+            <textarea id="backup-electrum-ltc-segwit" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+
+            <div class="placeholder">Litecoin Electrum native-segwit BIP84 recovery key</div>
+            <textarea id="backup-electrum-ltc-native-segwit" class="text-input" rows="3" cols="70" wrap="hard" spellcheck="false" readonly></textarea>
+            <br>
+
 
             <div class="placeholder">Ethereum private keys</div>
             <textarea id="backup-ethereum-private-keys" class="text-input" rows="5" cols="70" spellcheck="false" readonly></textarea>

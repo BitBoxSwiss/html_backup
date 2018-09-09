@@ -111,16 +111,26 @@ function backup_clear()
     ui.backupUserEntropy.value = '';;
     ui.backupPassword.value = '';
     ui.backupXpriv.value = '';
-    ui.backupElectrum.value = '';
-    ui.backupElectrumMultisig.value = '';
+    ui.backupElectrumBtcLegacy.value = '';
+    ui.backupElectrumBtcSegwit.value = '';
+    ui.backupElectrumBtcNativeSegwit.value = '';
+    ui.backupElectrumBtcMultisig.value = '';
+    ui.backupElectrumLtcLegacy.value = '';
+    ui.backupElectrumLtcSegwit.value = '';
+    ui.backupElectrumLtcNativeSegwit.value = '';
     ui.backupEthereumPrivateKeys.value = '';
     clear_notice(ui.backupEntropy);
     clear_notice(ui.backupXpriv);
     clear_notice(ui.backupPassword);
     clear_notice(ui.backupUserEntropy);
     clear_notice(ui.backupName);
-    clear_notice(ui.backupElectrum);
-    clear_notice(ui.backupElectrumMultisig);
+    clear_notice(ui.backupElectrumBtcLegacy);
+    clear_notice(ui.backupElectrumBtcSegwit);
+    clear_notice(ui.backupElectrumBtcNativeSegwit);
+    clear_notice(ui.backupElectrumBtcMultisig);
+    clear_notice(ui.backupElectrumLtcLegacy);
+    clear_notice(ui.backupElectrumLtcSegwit);
+    clear_notice(ui.backupElectrumLtcNativeSegwit);
     clear_notice(ui.backupEthereumPrivateKeys);
 }
 
@@ -238,8 +248,13 @@ function backup_create()
 {
     clear_notice(ui.backupXpriv);
     ui.backupXpriv.value = '';
-    ui.backupElectrum.value = '';
-    ui.backupElectrumMultisig.value = '';
+    ui.backupElectrumBtcLegacy.value = '';
+    ui.backupElectrumBtcSegwit.value = '';
+    ui.backupElectrumBtcNativeSegwit.value = '';
+    ui.backupElectrumBtcMultisig.value = '';
+    ui.backupElectrumLtcLegacy.value = '';
+    ui.backupElectrumLtcSegwit.value = '';
+    ui.backupElectrumLtcNativeSegwit.value = '';
     ui.backupEthereumPrivateKeys.value = '';
     
     if (ui.backupUserEntropy.value === '') {
@@ -272,11 +287,18 @@ function backup_create()
 }
 
 
+
 function backup_generate()
 {
     ui.backupXpriv.value = '';;
-    ui.backupElectrum.value = '';;
-    ui.backupElectrumMultisig.value = '';;
+    ui.backupElectrumBtcLegacy.value = '';;
+    ui.backupElectrumBtcSegwit.value = '';;
+    ui.backupElectrumBtcNativeSegwit.value = '';;
+    ui.backupElectrumBtcMultisig.value = '';;
+    ui.backupElectrumLtcLegacy.value = '';;
+    ui.backupElectrumLtcSegwit.value = '';;
+    ui.backupElectrumLtcNativeSegwit.value = '';;
+
     ui.backupEthereumPrivateKeys.value = '';;
     clear_notice(ui.backupUserEntropy);
     
@@ -332,16 +354,44 @@ function backup_generate()
             return;
         }
 
+
+        //electrum uses different xpriv version bytes for p2wpkh-p2sh BIP49  and p2wpkh BIP84
         var xpriv = '0488ade4' + '000000000000000000' + chaincode + '00' + privatekey;
         xpriv = base58check.encode(new Buffer(xpriv, 'hex'));
-       
-        var bip32_keychain = new BIP32(xpriv);
-        var electrum_key = bip32_keychain.derive("m/44'/0'/0'");
-        electrum_key = base58check.encode(new Buffer(electrum_key.extended_private_key, 'hex'));
 
-        var electrum_key_ms = bip32_keychain.derive("m/100'/45'/0'");
-        electrum_key_ms = base58check.encode(new Buffer(electrum_key_ms.extended_private_key, 'hex'));
-        
+        var bip32_keychain = new BIP32(xpriv);
+        var electrum_key_btc_leg = bip32_keychain.derive("m/44'/0'/0'");
+        electrum_key_btc_leg = base58check.encode(new Buffer(electrum_key_btc_leg.extended_private_key, 'hex'));
+
+        var electrum_key_btc_ms = bip32_keychain.derive("m/100'/45'/0'");
+        electrum_key_btc_ms = base58check.encode(new Buffer(electrum_key_btc_ms.extended_private_key, 'hex'));
+
+        var electrum_key_ltc_leg = bip32_keychain.derive("m/44'/2'/0'");
+        electrum_key_ltc_leg = base58check.encode(new Buffer(electrum_key_ltc_leg.extended_private_key, 'hex'));
+
+
+        var segwit_xpriv = '049d7878' + '000000000000000000' + chaincode + '00' + privatekey;
+        segwit_xpriv = base58check.encode(new Buffer(segwit_xpriv, 'hex'));
+
+        var bip32_keychain_seg = new BIP32(segwit_xpriv);
+        var electrum_key_btc_seg = bip32_keychain_seg.derive("m/49'/0'/0'");
+        electrum_key_btc_seg = base58check.encode(new Buffer(electrum_key_btc_seg.extended_private_key, 'hex'));
+
+        var electrum_key_ltc_seg = bip32_keychain_seg.derive("m/49'/2'/0'");
+        electrum_key_ltc_seg = base58check.encode(new Buffer(electrum_key_ltc_seg.extended_private_key, 'hex'));
+
+
+        var native_xpriv = '04b2430c' + '000000000000000000' + chaincode + '00' + privatekey;
+        native_xpriv = base58check.encode(new Buffer(native_xpriv, 'hex'));
+
+        var bip32_keychain_nat_seg = new BIP32(native_xpriv);
+        var electrum_key_btc_nat_seg = bip32_keychain_nat_seg.derive("m/84'/0'/0'");
+        electrum_key_btc_nat_seg = base58check.encode(new Buffer(electrum_key_btc_nat_seg.extended_private_key, 'hex'));
+
+        var electrum_key_ltc_nat_seg = bip32_keychain_nat_seg.derive("m/84'/2'/0'");
+        electrum_key_ltc_nat_seg = base58check.encode(new Buffer(electrum_key_ltc_nat_seg.extended_private_key, 'hex'));
+
+
         var ethereum_key, 
             ethereum_keys = '';
         for (var i = 0; i < 20; i++) {
@@ -350,8 +400,13 @@ function backup_generate()
         }
 
         ui.backupXpriv.value = xpriv;
-        ui.backupElectrum.value = electrum_key;
-        ui.backupElectrumMultisig.value = electrum_key_ms;
+        ui.backupElectrumBtcLegacy.value = electrum_key_btc_leg;
+        ui.backupElectrumBtcSegwit.value = electrum_key_btc_seg;
+        ui.backupElectrumBtcNativeSegwit.value = electrum_key_btc_nat_seg;
+        ui.backupElectrumBtcMultisig.value = electrum_key_btc_ms;
+        ui.backupElectrumLtcLegacy.value = electrum_key_ltc_leg;
+        ui.backupElectrumLtcSegwit.value = electrum_key_ltc_seg;
+        ui.backupElectrumLtcNativeSegwit.value = electrum_key_ltc_nat_seg;
         ui.backupEthereumPrivateKeys.value = ethereum_keys;
 
         spinnerStop();
